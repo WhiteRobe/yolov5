@@ -1,0 +1,13 @@
+# download command/URL (optional)
+download: none
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: /data2/datasets/mafia/train.txt
+val: /data2/datasets/mafia/val.txt
+test: /data2/datasets/mafia/test.txt
+
+# number of classes
+nc: 2
+
+# class names
+names: ['person', 'car']
