@@ -1,0 +1,24 @@
+# download command/URL (optional)
+download: none
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: /data2/datasets/fs_obd_ds/sim10k/train.txt
+val: /data2/datasets/fs_obd_ds/sim10k/val.txt
+test: /data2/datasets/fs_obd_ds/sim10k/test.txt
+
+# number of classes
+nc: 3
+
+# class names
+names: ['person', 'car', 'motorbike']
+
+# img size (1914 x 1052)
+
+# 预训练脚本
+# python train.py --data sim10k.yaml --img-size 1024 1024 --batch-size 12 --epochs 100 --weights yolov5l.pt --project adpt/train/sim10k --name pre-train --cache-images --rect --exist-ok
+
+# 测试脚本
+# python test.py --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --save-txt --save-hybrid --save-conf --save-json --project runs/test/sim10k --name pre-train --exist-ok --weights runs/train/sim10k/weights/best.pt
+
+# 推理脚本
+# python detect.py --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --save-txt --save-conf --save-json --project runs/detect/sim10k --name pre-train --exist-ok --line_thickness 2 --weights runs/train/sim10k/weights/best.pt --source /data2/datasets/fs_obd_ds/sim10k/detect

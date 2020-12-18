@@ -2,9 +2,9 @@
 download: none
 
 # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train: /data2/datasets/cityscapes_foggy/yolo_train.txt
-val: /data2/datasets/cityscapes_foggy/yolo_val.txt
-test: /data2/datasets/cityscapes_foggy/yolo_test.txt
+train: /data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_train.txt
+val: /data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_val.txt
+test: /data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_test.txt
 
 # number of classes
 nc: 38
@@ -17,6 +17,3 @@ names: [ 'sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
          'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
          'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
          'ridergroup', 'truckgroup' ]
-
-
-# python train.py --data cityscapes_foggy.yaml --img 1024 --epoch 100 --batch 8 --weights yolov5s.pt --project adpt/cityscapes --name pre-train
