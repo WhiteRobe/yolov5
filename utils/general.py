@@ -2,6 +2,7 @@
 
 import glob
 import logging
+import math
 import os
 import platform
 import random
@@ -11,7 +12,6 @@ import time
 from pathlib import Path
 
 import cv2
-import math
 import numpy as np
 import torch
 import torchvision
@@ -95,6 +95,11 @@ def check_dataset(dict):
 def make_divisible(x, divisor):
     # Returns x evenly divisible by divisor
     return math.ceil(x / divisor) * divisor
+
+
+def clean_str(s):
+    # Cleans a string by replacing special characters with underscore _
+    return re.sub(pattern="[|@#!¡·$€%&()=?¿^*;:,¨´><+]", repl="_", string=s)
 
 
 def labels_to_class_weights(labels, nc=80):
@@ -311,7 +316,7 @@ def non_max_suppression(prediction, conf_thres=0.25, iou_thres=0.45, classes=Non
             x = torch.cat((box, conf, j.float()), 1)[conf.view(-1) > conf_thres]
 
         # Filter by class
-        if classes:
+        if classes is not None:
             x = x[(x[:, 5:6] == torch.tensor(classes, device=x.device)).any(1)]
 
         # Apply finite constraint
