@@ -7,7 +7,15 @@ val: /data2/datasets/fs_obd_ds/mafia/val.txt
 test: /data2/datasets/fs_obd_ds/mafia/test.txt
 
 # number of classes
-nc: 2
+nc: 3
 
 # class names
-names: ['person', 'car']
+names: ['person', 'car', 'motorbike']
+
+# img size (1280 x 720)
+
+# 预训练脚本
+# python train.py --data mafia.yaml --img-size 720 720 --batch-size 8 --epochs 100 --weights yolov5l.pt --hyp data/hyp.finetune.yaml --project adpt/train/mafia --name pre-train --cache-images --rect --exist-ok
+
+# 测试脚本
+# python test.py --verbose --data mafia.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/mafia --name pre-train --exist-ok --weights adpt/train/mafia/pre-train/weights/best.pt

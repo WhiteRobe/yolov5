@@ -11,3 +11,11 @@ nc: 3
 
 # class names
 names: ['person', 'car', 'truck']
+
+# img size (1920 x 1200)
+
+# 预训练脚本
+# python train.py --data udacity.yaml --img-size 1024 1024 --batch-size 8 --epochs 100 --weights yolov5l.pt --hyp data/hyp.finetune.yaml --project adpt/train/udacity --name pre-train --cache-images --rect --exist-ok
+
+# 测试脚本
+# python test.py --verbose --data udacity.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/udacity --name pre-train --exist-ok --weights adpt/train/udacity/pre-train/weights/best.pt

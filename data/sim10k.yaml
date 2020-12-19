@@ -15,10 +15,10 @@ names: ['person', 'car', 'motorbike']
 # img size (1914 x 1052)
 
 # 预训练脚本
-# python train.py --data sim10k.yaml --img-size 1024 1024 --batch-size 12 --epochs 100 --weights yolov5l.pt --project adpt/train/sim10k --name pre-train --cache-images --rect --exist-ok
+# python train.py --data sim10k.yaml --img-size 1024 1024 --batch-size 12 --epochs 100 --weights yolov5l.pt --hyp data/hyp.finetune.yaml --project adpt/train/sim10k --name pre-train --cache-images --rect --exist-ok
 
 # 测试脚本
-# python test.py --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --save-txt --save-hybrid --save-conf --save-json --project runs/test/sim10k --name pre-train --exist-ok --weights runs/train/sim10k/weights/best.pt
+# python test.py --verbose --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --save-txt --save-hybrid --save-conf --save-json --project adpt/test/sim10k --name pre-train --exist-ok --weights adpt/train/sim10k/pre-train/weights/best.pt
 
 # 推理脚本
-# python detect.py --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --save-txt --save-conf --save-json --project runs/detect/sim10k --name pre-train --exist-ok --line_thickness 2 --weights runs/train/sim10k/weights/best.pt --source /data2/datasets/fs_obd_ds/sim10k/detect
+# python detect.py --data sim10k.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/detect/sim10k --name pre-train --exist-ok --line_thickness 2 --weights adpt/train/sim10k/weights/best.pt --source /data2/datasets/fs_obd_ds/sim10k/detect

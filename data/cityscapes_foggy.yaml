@@ -17,3 +17,11 @@ names: [ 'sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
          'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
          'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
          'ridergroup', 'truckgroup' ]
+
+# img size (2048 x 1024)
+
+# 预训练脚本
+# python train.py --data cityscapes_foggy.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights yolov5l.pt --hyp data/hyp.finetune.yaml --project adpt/train/cityscapes_foggy --name pre-train --cache-images --rect --exist-ok
+
+# 测试脚本
+# python test.py --verbose --data cityscapes_foggy.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/cityscapes_foggy --name pre-train --exist-ok --weights adpt/train/cityscapes_foggy/pre-train/weights/best.pt
