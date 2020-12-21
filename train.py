@@ -423,8 +423,8 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
     else:
         dist.destroy_process_group()
 
-    wandb.run.finish() if wandb and wandb.run else None
     torch.cuda.empty_cache()
+    wandb.run.finish() if wandb and wandb.run else None
     return results
 
 
