@@ -423,8 +423,8 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
     else:
         dist.destroy_process_group()
 
-    torch.cuda.empty_cache()
     wandb.run.finish() if wandb and wandb.run else None
+    torch.cuda.empty_cache()
     return results
 
 
@@ -458,7 +458,13 @@ if __name__ == '__main__':
     parser.add_argument('--project', default='runs/train', help='save to project/name')
     parser.add_argument('--name', default='exp', help='save to project/name')
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
+    parser.add_argument('--dryrun', action='store_true', help='wandb dry-run')  # wandb sync wandb/dryrun-folder-name
     opt = parser.parse_args()
+
+    # Set wandb logs offline
+    if opt.dryrun:
+        os.environ["WANDB_API_KEY"] = yaml.load(Loader=yaml.FullLoader, stream=open('./key.yaml'))["WANDB_API_KEY"]
+        os.environ["WANDB_MODE"] = "dryrun"
 
     # Set DDP variables
     opt.total_batch_size = opt.batch_size
