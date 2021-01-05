@@ -30,3 +30,6 @@ names: ['person', 'car', 'truck']
 
 # 测试脚本
 # python test.py --verbose --data cityscapes.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/cityscapes --name pre-train --exist-ok --weights adpt/train/cityscapes/pre-train/weights/best.pt
+
+# 推理脚本
+# python detect.py --img-size 1024 --conf-thres 0.7 --iou-thres 0.6 --augment --project adpt/detect/cityscapes --name pre-train --exist-ok --line_thickness 2 --weights adpt/train/cityscapes/pre-train/weights/best.pt --source /data2/datasets/fs_obd_ds/cityscapes/images/detect --classes 10 21

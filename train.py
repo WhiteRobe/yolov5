@@ -463,16 +463,20 @@ if __name__ == '__main__':
 
     # Set wandb logs offline
     if opt.dryrun:
-        os.environ["WANDB_API_KEY"] = yaml.load(Loader=yaml.FullLoader, stream=open('./key.yaml'))["WANDB_API_KEY"]
-        os.environ["WANDB_MODE"] = "dryrun"
+        try:
+            os.environ["WANDB_API_KEY"] = yaml.load(Loader=yaml.FullLoader, stream=open('./key.yaml'))["WANDB_API_KEY"]
+            os.environ["WANDB_MODE"] = "dryrun"
+        except:
+            warn("Fail to Set wandb logs offline. Missing `key.yaml` or key `WANDB_API_KEY`."
+                 "\tor you can use `wandb offline` in stead.")
 
     # Set DDP variables
     opt.total_batch_size = opt.batch_size
     opt.world_size = int(os.environ['WORLD_SIZE']) if 'WORLD_SIZE' in os.environ else 1
     opt.global_rank = int(os.environ['RANK']) if 'RANK' in os.environ else -1
     set_logging(opt.global_rank)
-    if opt.global_rank in [-1, 0]:
-        check_git_status()
+    # if opt.global_rank in [-1, 0]:
+    #     check_git_status()  # I don't want to check my github.
 
     # Resume
     if opt.resume:  # resume an interrupted run
