@@ -8,14 +8,17 @@ import pandas as pd
 
 pick_img_num = 1
 class_per_img = None
-train_txt_path = Path('/data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_train.txt')
-classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
-           'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
-           'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
-           'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
-           'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
-           'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
-           'ridergroup', 'truckgroup']
+train_txt_path = Path('/data2/datasets/fs_obd_ds/sim10k/train.txt')
+# classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
+#            'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
+#            'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
+#            'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
+#            'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
+#            'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
+#            'ridergroup', 'truckgroup']
+classes = ['person', 'car', 'truck']  # udacity & cityscapes
+# classes = ['person', 'car', 'motorcycle']  # sim10k
+# classes = ['person', 'car', 'motorbike']  # mafia
 
 
 def mkdir(url):
