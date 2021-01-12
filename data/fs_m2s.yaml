@@ -17,7 +17,7 @@ names: ['person', 'car', 'motorcycle']
 # img size (1914 x 1052)
 
 # ft脚本
-# python train.py --data fs_m2s.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/mafia/pre-train-1024/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/M2S --name ft_1a --cache-images --rect --exist-ok
+# python train.py --data fs_m2s.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/mafia/pre-train-1024/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/M2S --name ft_1a --cache-images --rect --exist-ok  --adpt
 
 # 测试脚本
 # python test.py --verbose --data fs_m2s.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/M2S --name ft_1a  --exist-ok --weights adpt/train/M2S/ft_1a/weights/best.pt

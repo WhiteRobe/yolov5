@@ -17,7 +17,7 @@ names: ['person', 'car', 'motorcycle']
 # img size (1914 x 1052)
 
 # ft脚本
-# python train.py --data fs_u2s.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/udacity/pre-train/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/U2S --name ft_1a --cache-images --rect --exist-ok
+# python train.py --data fs_u2s.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/udacity/pre-train/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/U2S --name ft_1a --cache-images --rect --exist-ok  --adpt
 
 # 测试脚本
 # python test.py --verbose --data fs_u2s.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/U2S --name ft_1a  --exist-ok --weights adpt/train/U2S/ft_1a/weights/best.pt

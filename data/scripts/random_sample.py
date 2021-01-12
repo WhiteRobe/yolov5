@@ -1,4 +1,6 @@
-from typing import List, Any
+"""
+随机采样，构建few-shot数据集
+"""
 
 import numpy as np
 import os
@@ -6,17 +8,17 @@ import shutil
 from pathlib import Path
 import pandas as pd
 
-pick_img_num = 1
-class_per_img = None
-train_txt_path = Path('/data2/datasets/fs_obd_ds/sim10k/train.txt')
-# classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
-#            'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
-#            'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
-#            'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
-#            'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
-#            'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
-#            'ridergroup', 'truckgroup']
-classes = ['person', 'car', 'truck']  # udacity & cityscapes
+pick_img_num = 1  # 每类x个图
+class_per_img = None  # 每图每类x个框
+train_txt_path = Path('/data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_train.txt')
+classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
+           'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
+           'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
+           'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
+           'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
+           'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
+           'ridergroup', 'truckgroup']
+# classes = ['person', 'car', 'truck']  # udacity & cityscapes
 # classes = ['person', 'car', 'motorcycle']  # sim10k
 # classes = ['person', 'car', 'motorbike']  # mafia
 
@@ -66,7 +68,7 @@ def sample():
                                                  Path(imgs[index]).name.replace('\n', '')
                                      .replace('png', 'txt').replace('jpg', 'txt'))
                 need_to_match[label] += 1
-                matched += 1
+                matched += int(need_to_match[label] == pick_img_num)
                 # print(label)
                 break  # 每张图只匹配一个类
         index += 1

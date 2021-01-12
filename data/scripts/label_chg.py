@@ -1,3 +1,6 @@
+"""
+任意两个数据集的标签，进行统一转化
+"""
 import argparse
 from pathlib import Path
 import os

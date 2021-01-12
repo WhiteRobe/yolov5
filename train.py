@@ -136,7 +136,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         wandb_run = wandb.init(config=opt, resume="allow",
                                project='YOLOv5' if opt.project == 'runs/train' else Path(opt.project).stem,
                                name=save_dir.stem,
-                               id=ckpt.get('wandb_id') if 'ckpt' in locals() else None)
+                               id=ckpt.get('wandb_id') if 'ckpt' in locals() and (not opt.adpt) else None)
     loggers = {'wandb': wandb}  # loggers dict
 
     # Resume
@@ -459,6 +459,7 @@ if __name__ == '__main__':
     parser.add_argument('--name', default='exp', help='save to project/name')
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     parser.add_argument('--dryrun', action='store_true', help='wandb dry-run')  # wandb sync wandb/dryrun-folder-name
+    parser.add_argument('--adpt', action='store_true', help='wandb id reset')
     opt = parser.parse_args()
 
     # Set wandb logs offline
