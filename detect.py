@@ -53,7 +53,11 @@ def detect(save_img=False):
 
     # Get names and colors
     names = model.module.names if hasattr(model, 'module') else model.names
-    colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
+    if opt.fixed_colors:
+        rng = random.RandomState(seed=825)
+        colors = [[rng.randint(0, 255) for _ in range(3)] for _ in names]
+    else:
+        colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]
 
     # Run inference
     t0 = time.time()
@@ -162,6 +166,7 @@ if __name__ == '__main__':
     parser.add_argument('--name', default='exp', help='save results to project/name')
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     parser.add_argument('--line_thickness', type=int, default=2, help='box line thicknes')
+    parser.add_argument('--fixed-colors', action='store_true', help='use fixed colors')
     opt = parser.parse_args()
     print(opt)
 

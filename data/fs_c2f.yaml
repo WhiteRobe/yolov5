@@ -2,7 +2,8 @@
 download: none
 
 # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train: /data2/datasets/fs_obd_ds/cityscapes_foggy/train_yolo_fs.txt
+train: /data2/datasets/fs_obd_ds/cityscapes_foggy/mixup_train_yolo.txt
+# train: /data2/datasets/fs_obd_ds/cityscapes_foggy/train_yolo_fs.txt
 val: /data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_val.txt
 test: /data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_test.txt
 
