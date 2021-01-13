@@ -8,6 +8,7 @@ import shutil
 from pathlib import Path
 import pandas as pd
 from PIL import Image
+from tqdm import tqdm
 
 np.random.seed(825)
 
@@ -28,10 +29,10 @@ def mkdir(url):
 
 if __name__ == '__main__':
     # --变量修改区-- #
-    ori_root = Path('/data2/datasets/fs_obd_ds/cityscapes')  # 源域数据集存放地址
-    root = Path('/data2/datasets/fs_obd_ds/cityscapes_foggy')  # 目标域数据集存放地址
+    ori_root = Path('/data2/datasets/fs_obd_ds/sim10k')  # 源域数据集存放地址
+    root = Path('/data2/datasets/fs_obd_ds/mafia')  # 目标域数据集存放地址
 
-    train_txt = 'yolo_train.txt'
+    train_txt = 'train.txt'
     fs_train_txt = 'train_yolo_fs.txt'  # 小样本数据集标签 由random_sample采样得到
 
     fs_pair_num, fs_label_num = 2, 10  # 每张源图配对x个小样本图，小样本图中的框至多选择x个
@@ -44,15 +45,24 @@ if __name__ == '__main__':
     mkdir(root / 'mixup' / 'labels'), mkdir(root / 'mixup' / 'images')
 
     mixup_dict = []
+    miss = [0, 0]
     with open(ori_root / train_txt, 'r') as f:
-        for img_url in f.readlines():
-            oimg, olabel = read_img_label(ori_root, img_url.replace('\n', ''))
+        for img_url in tqdm(f.readlines()):
+            try:
+                oimg, olabel = read_img_label(ori_root, img_url.replace('\n', ''))
+            except:
+                miss[0] += 1
+                continue
 
             with open(root / fs_train_txt, 'r') as fs:
                 _fs = list(fs.readlines())
                 np.random.shuffle(_fs)
                 for img_url2 in _fs[:min(fs_pair_num, len(_fs))]:
-                    fimg, flabel = read_img_label(root, img_url2.replace('\n', ''))
+                    try:
+                        fimg, flabel = read_img_label(root, img_url2.replace('\n', ''))
+                    except:
+                        miss[1] += 1
+                        continue
                     fimg = fimg.resize(oimg.size, Image.ANTIALIAS)
 
                     blend_rate = round(np.random.random() * 0.5, 2)  # <0.5
@@ -75,3 +85,5 @@ if __name__ == '__main__':
     # 写出配置文件
     with open(root / 'mixup_train_yolo.txt', 'w') as fo:
         fo.writelines(mixup_dict)
+
+    print(f'miss = {miss}')
