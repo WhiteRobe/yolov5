@@ -24,4 +24,8 @@ names: ['person', 'car', 'truck']
 # python test.py --verbose --data fs_s2u.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/S2U --name ft_1a  --exist-ok --weights adpt/train/S2U/ft_1a/weights/best.pt
 
 # 推理脚本
-# python detect.py --img-size 1024 --conf-thres 0.7 --iou-thres 0.6 --augment --project adpt/detect/S2U --name ft_1a --exist-ok --line_thickness 2 --weights adpt/train/S2U/ft_1a/weights/best.pt --source /data2/datasets/fs_obd_ds/udacity/images/detect --classes 10 21
+# python detect.py --img-size 1024 --conf-thres 0.8 --iou-thres 0.6 --augment --project adpt/detect/S2U --name source --exist-ok --line_thickness 3 --weights adpt/train/sim10k/pre-train/weights/best.pt --source /data2/datasets/fs_obd_ds/udacity/detect --fixed-colors
+
+# python detect.py --img-size 1024 --conf-thres 0.8 --iou-thres 0.6 --augment --project adpt/detect/S2U --name ft_1a --exist-ok --line_thickness 3 --weights adpt/train/S2U/ft_1a/weights/best.pt --source /data2/datasets/fs_obd_ds/udacity/detect --fixed-colors
+
+# python detect.py --img-size 1024 --conf-thres 0.6 --iou-thres 0.6 --augment --project adpt/detect/S2U --name ft_1a_mixup --exist-ok --line_thickness 3 --weights adpt/train/S2U/ft_1a_mixup/weights/best.pt --source /data2/datasets/fs_obd_ds/udacity/detect --fixed-colors

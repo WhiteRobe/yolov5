@@ -10,15 +10,15 @@ import pandas as pd
 
 pick_img_num = 1  # 每类x个图
 class_per_img = None  # 每图每类x个框
-train_txt_path = Path('/data2/datasets/fs_obd_ds/cityscapes_foggy/yolo_train.txt')
-classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
-           'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
-           'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
-           'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
-           'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
-           'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
-           'ridergroup', 'truckgroup']
-# classes = ['person', 'car', 'truck']  # udacity & cityscapes
+train_txt_path = Path('/data2/datasets/fs_obd_ds/cityscapes/yolo_train.txt')
+# classes = ['sidewalk', 'sky', 'road', 'building', 'traffic light', 'pole',
+#            'static', 'cargroup', 'vegetation', 'traffic sign', 'car', 'bicycle',
+#            'train', 'dynamic', 'terrain', 'fence', 'ground', 'motorcycle',
+#            'bicyclegroup', 'license plate', 'parking', 'person', 'persongroup',
+#            'bridge', 'polegroup', 'tunnel', 'bus', 'rider', 'guard rail', 'wall',
+#            'truck', 'trailer', 'caravan', 'rail track', 'rectification border', 'motorcyclegroup',
+#            'ridergroup', 'truckgroup']
+classes = ['person', 'car', 'truck']  # udacity & cityscapes
 # classes = ['person', 'car', 'motorcycle']  # sim10k
 # classes = ['person', 'car', 'motorbike']  # mafia
 

@@ -19,3 +19,6 @@ names: ['person', 'car', 'truck']
 
 # 测试脚本
 # python test.py --verbose --data udacity.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/udacity --name pre-train --exist-ok --weights adpt/train/udacity/pre-train/weights/best.pt
+
+# 推理脚本
+# python detect.py --img-size 1024 --conf-thres 0.7 --iou-thres 0.6 --augment --project adpt/detect/udacity --name pre-train --exist-ok --line_thickness 3 --weights adpt/train/udacity/pre-train/weights/best.pt --source /data2/datasets/fs_obd_ds/udacity/detect  --fixed-colors

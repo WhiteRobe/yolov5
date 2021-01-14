@@ -54,7 +54,7 @@ def detect(save_img=False):
     # Get names and colors
     names = model.module.names if hasattr(model, 'module') else model.names
     if opt.fixed_colors:
-        rng = random.RandomState(seed=825)
+        rng = random.RandomState(seed=1825)
         colors = [[rng.randint(0, 255) for _ in range(3)] for _ in names]
     else:
         colors = [[random.randint(0, 255) for _ in range(3)] for _ in names]

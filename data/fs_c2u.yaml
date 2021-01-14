@@ -2,7 +2,8 @@
 download: none
 
 # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train: /data2/datasets/fs_obd_ds/udacity/train_yolo_fs.txt
+train: /data2/datasets/fs_obd_ds/udacity/mixup_train_yolo.txt
+# train: /data2/datasets/fs_obd_ds/udacity/train_yolo_fs.txt
 val: /data2/datasets/fs_obd_ds/udacity/val.txt
 test: /data2/datasets/fs_obd_ds/udacity/test.txt
 
@@ -17,7 +18,7 @@ names: ['person', 'car', 'truck']
 # img size (1920 x 1200)
 
 # ft脚本
-# python train.py --data fs_c2u.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/cityscapes/pre-train-3cls/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/C2U --name ft_1a --cache-images --rect --exist-ok  --adpt
+# python train.py --data fs_c2u.yaml --img-size 1024 1024 --batch-size 4 --epochs 100 --weights adpt/train/cityscapes/pre-train-3cls/weights/best.pt --hyp data/hyp.finetune.yaml --project adpt/train/C2U --name ft_1a_mixup --cache-images --rect --exist-ok  --adpt
 
 # 测试脚本
 # python test.py --verbose --data fs_c2u.yaml --img-size 1024 --conf-thres 0.001 --iou-thres 0.6 --augment --project adpt/test/C2U --name ft_1a  --exist-ok --weights adpt/train/C2U/ft_1a/weights/best.pt
