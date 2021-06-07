@@ -29,11 +29,11 @@ def mkdir(url):
 
 if __name__ == '__main__':
     # --变量修改区-- #
-    ori_root = Path('/data2/datasets/fs_obd_ds/cityscapes')  # 源域数据集存放地址
-    root = Path('/data2/datasets/fs_obd_ds/udacity')  # 目标域数据集存放地址
+    ori_root = Path('/data2/datasets/fs_obd_ds/sim10k')  # 源域数据集存放地址
+    root = Path('/data2/datasets/fs_obd_ds/cityscapes')  # 目标域数据集存放地址
 
-    train_txt = 'yolo_train.txt'
-    # train_txt = 'train.txt'
+    # train_txt = 'yolo_train.txt'
+    train_txt = 'train.txt'
     fs_train_txt = 'train_yolo_fs.txt'  # 小样本数据集标签 由random_sample采样得到
 
     fs_pair_num, fs_label_num = 2, 10  # 每张源图配对x个小样本图，小样本图中的框至多选择x个
